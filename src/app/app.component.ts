@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cnpj } from './cnpj';
 import { cnpjService } from './cnpj.service';
 
@@ -12,10 +12,10 @@ import { cnpjService } from './cnpj.service';
 })
 export class AppComponent implements OnInit {
   title = 'Cnpj';
-  
-  public value1!: String;
-  public value2! : String;
-  public usuario = "";  
+
+  public value1!: number;
+  public value2!: number;
+  public usuario = "";
   cnpj: any;
   cnpjForm!: FormGroup;
   cnpjMask: string = '00.000.000/0000-00';
@@ -23,16 +23,37 @@ export class AppComponent implements OnInit {
   constructor(
     private cnpjService: cnpjService,
     private formBuilder: FormBuilder
-    ) {}
+  ) { }
 
-    ngOnInit(){
-      
-    }
+  ngOnInit(): void {
+    this.cnpjForm = this.formBuilder.group({
+      cnpj: ["",
+        [
+          Validators.required,
+          Validators.maxLength(18),
+          
+        ]
+      ],
+      /*value1: ["",
+        [
+          Validators.required
+        ]
+      ],
+      value2: ["",
+        [
+          Validators.required
+        ]
 
-    getMedia() {
-      console.log(this.value1,this.value2,this.usuario)
-       this.cnpjService.getMedia(this.value1,this.value2)
-      .then(cnpj => console.log(this.value1,this.value2))
+      ]*/
+
+
+    })
+  }
+
+  getMedia() {
+
+    this.cnpjService.getMedia(this.value1, this.value2)
+      .then(cnpj => console.log(this.value1, this.value2))
       .catch(error => console.error());
 
   }

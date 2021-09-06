@@ -1,32 +1,77 @@
 <body class="h-screen grid items-center justify-center">
-    <div class="max-w-7xl mx-auto px-12">
+    <form [formGroup]="cnpjForm">
+        <div class="max-w-7xl mx-auto px-12">
 
-        <h1 class="inline  text-3xl  font-extrabold  tracking-tight text-gray-900  sm:text-4xl sm:block">Enter CNPJ
-        </h1>
-        <label for="enter-cnpj" class="sr-only">Enter CNPJ</label>
-        <input [(ngModel)]="cnpj" type="text">
-        <button (click)="getCnpj()">Botão</button>
+            <h1 class="inline  text-3xl  font-extrabold  tracking-tight text-gray-900  sm:text-4xl sm:block">Enter CNPJ
+            </h1>
+            <label for="enter-cnpj" class="sr-only">Enter CNPJ</label>
 
-    </div>
+            <input class="border border-gray-300 
+                rounded-md
+                px-5
+                py-3
+                focus:outline-none
+                focus:ring-green-500
+                focus:border-green-500
+                w-full
+                form-control
+                " [(ngModel)]="cnpj" type="text" placeholder="00.000.000/0000-00" [mask]="cnpjMask"
+                formControlName="cnpj" required>
+
+
+            <button class="bg-green-500 px-5 py-3 my-2 text-white rounded-md
+                flex items-center justify-center
+                hover:bg-green-600
+                focus:outline-none
+                focus:ring-2 focus:ring-offset-2 focus:ring-green-500
+                w-full
+                " [disabled]="cnpjForm.invalid" (click)="getCnpj()">Botão
+            </button>
+
+        </div>
+
+    </form>
 
     <div class="grid items-center justify-center">
         <div class="max-w-7xl mx-auto px-12">
-            
-                <h1 class="inline text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:block">Valor 1</h1>
-                <label for="enter-cnpj" class="sr-only">Valor 1</label>
-                <input type="text" [(ngModel)]="value1" />
 
-                <h1 class=" inline text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:block ">Valor 2
-                </h1>
-                <label for="enter-cnpj" class="sr-only">Valor 2</label>
-                <input type="text" [(ngModel)]="value2" />
+            <h1 class="inline text-3xl font-extrabold tracking-tight text-gray-900 sm:text-3xl sm:block">Valor 1
+            </h1>
+            <label for="enter-cnpj" class="sr-only">Valor 1</label>
+            <input class="border border-gray-300
+                        rounded-md
+                        px-5
+                        py-3
+                        focus:outline-none
+                        focus:ring-green-500
+                        focus:border-green-500
+                        w-full
+                        
+                        " type="number" [(ngModel)]="value1" required />
 
-                <button (click)="getMedia()">Botão</button>
-               
-                <div id="cnpj.cnpj">
-                    <h2>{{cnpj.telephone}} </h2>
-                 </div>
+            <h1 class=" inline text-3xl font-extrabold tracking-tight text-gray-900 sm:text-3xl sm:block ">Valor 2
+            </h1>
+            <label for="enter-cnpj" class="sr-only">Valor 2</label>
+            <input class="border border-gray-300
+                        rounded-md
+                        px-5
+                        py-3
+                        focus:outline-none
+                        focus:ring-green-500
+                        focus:border-green-500
+                        w-full
+                        " type="number" [(ngModel)]="value2"  required />
 
+            <button class="bg-green-500 px-5 py-3 my-2 text-white rounded-md
+                        flex items-center justify-center
+                        hover:bg-green-600
+                        focus:outline-none
+                        focus:ring-2 focus:ring-offset-2 focus:ring-green-500
+                        w-full
+                        " (click)="getMedia()">Botão</button>
+        
         </div>
     </div>
+
+
 </body>

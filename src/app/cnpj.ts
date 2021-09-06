@@ -1,7 +1,8 @@
 export interface Cnpj {
-    cnpj: string;
+   
     tradingName: string;
-companyName: string;
-telephone: string;
+    companyName: string;
+    cnpj: string;
+    telephone: string;
   }
   
